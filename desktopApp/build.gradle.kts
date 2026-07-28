@@ -16,6 +16,9 @@ dependencies {
 
     implementation("net.java.dev.jna:jna:5.14.0")
     implementation("net.java.dev.jna:jna-platform:5.14.0")
+
+    implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
+
 }
 
 compose.desktop {

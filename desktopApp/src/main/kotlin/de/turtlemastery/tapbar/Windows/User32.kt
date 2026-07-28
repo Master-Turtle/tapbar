@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar
+package de.turtlemastery.tapbar.Windows
 
 import com.sun.jna.Library
 import com.sun.jna.Native
