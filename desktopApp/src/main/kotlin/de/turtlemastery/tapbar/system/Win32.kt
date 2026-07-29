@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar.Windows
+package de.turtlemastery.tapbar.system
 
 import com.sun.jna.Structure
 import com.sun.jna.platform.win32.WinDef.HWND

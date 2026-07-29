@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar.Profiles
+package de.turtlemastery.tapbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,28 +16,13 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.ui.Modifier
-import de.turtlemastery.tapbar.BarManager
-import de.turtlemastery.tapbar.CP
-import kotlin.system.exitProcess
-
-/*
-DefaultButton(
-    onClick = {
-        }
-    ){
-
-    }
-*/
 
 class DefaultProf :Profile() {
     override val type = Profiles.DEFAULT
 
-    val corners : Dp = 8.dp
 
     @Composable
     override fun create() {
-
-        var minimize by remember { mutableStateOf(false) }
 
         var color1 by remember { mutableStateOf(CP.default[0]) }
 
@@ -47,7 +32,7 @@ class DefaultProf :Profile() {
                 .fillMaxSize()
                 .padding(4.dp)
         ){
-            if(!minimize){
+            if(!BarManager.minimized){
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -120,15 +105,17 @@ class DefaultProf :Profile() {
             ) {
                 DefaultButton(
                     onClick = {
-                        minimize = !minimize
-                        when (minimize) {
-                            true -> BarManager.minimize(0, screenSize.height-100,30,30)
+                        BarManager.minimized = !BarManager.minimized
+                        when (BarManager.minimized) {
+                            true -> {
+                                BarManager.minimize(0, screenSize.height-100,30,30)
+                                BarManager.showPofilesWindow = false
+                            }
                             false -> BarManager.maximize()
-
                         }
                     }
                 ) {
-                    if(minimize){
+                    if(BarManager.minimized){
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                             contentDescription = null,
@@ -142,6 +129,5 @@ class DefaultProf :Profile() {
                 }
             }
         }
-
     }
 }

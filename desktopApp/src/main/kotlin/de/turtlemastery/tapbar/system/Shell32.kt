@@ -1,9 +1,8 @@
-package de.turtlemastery.tapbar.Windows
+package de.turtlemastery.tapbar.system
 
 import com.sun.jna.Library
 import com.sun.jna.Native
 import com.sun.jna.Pointer
-
 
 interface Shell32 : Library {
 

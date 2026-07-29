@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar.Profiles
+package de.turtlemastery.tapbar
 
 enum class Profiles(val width: Int) {
     DEFAULT(42),

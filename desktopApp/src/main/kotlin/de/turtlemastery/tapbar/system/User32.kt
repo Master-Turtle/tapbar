@@ -1,9 +1,8 @@
-package de.turtlemastery.tapbar.Windows
+package de.turtlemastery.tapbar.system
 
 import com.sun.jna.Library
 import com.sun.jna.Native
-import com.sun.jna.platform.win32.WinDef.HWND
-
+import com.sun.jna.platform.win32.WinDef
 
 interface User32 : Library {
 
@@ -18,14 +17,14 @@ interface User32 : Library {
     }
 
 
-    fun GetSystemMetrics(
+    fun getSystemMetrics(
         index: Int
     ): Int
 
 
-    fun SetWindowPos(
-        hWnd: HWND?,
-        hWndInsertAfter: HWND?,
+    fun setWindowPos(
+        hWnd: WinDef.HWND?,
+        hWndInsertAfter: WinDef.HWND?,
         x: Int,
         y: Int,
         width: Int,
