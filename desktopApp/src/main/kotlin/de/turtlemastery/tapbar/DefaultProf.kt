@@ -108,7 +108,7 @@ class DefaultProf :Profile() {
                         BarManager.minimized = !BarManager.minimized
                         when (BarManager.minimized) {
                             true -> {
-                                BarManager.minimize(0, screenSize.height-100,30,30)
+                                BarManager.minimize(0, BarManager.screenSize.height-100,30,30)
                                 BarManager.showPofilesWindow = false
                             }
                             false -> BarManager.maximize()

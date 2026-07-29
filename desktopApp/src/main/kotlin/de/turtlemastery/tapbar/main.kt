@@ -19,6 +19,8 @@ import androidx.compose.ui.window.rememberWindowState
 import com.sun.jna.Pointer
 import com.sun.jna.platform.win32.WinDef.HWND
 
+// test
+
 fun main() = application {
 
     if (BarManager.shouldExit) {

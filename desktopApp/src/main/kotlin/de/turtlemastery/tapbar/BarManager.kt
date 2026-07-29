@@ -15,6 +15,7 @@ import de.turtlemastery.tapbar.system.ABM_REMOVE
 import de.turtlemastery.tapbar.system.ABM_SETPOS
 import de.turtlemastery.tapbar.system.Shell32
 import de.turtlemastery.tapbar.system.TapBarDATA
+import java.awt.Toolkit
 
 object BarManager {
 
@@ -28,6 +29,8 @@ object BarManager {
 
 
     val data = TapBarDATA()
+
+    val screenSize = Toolkit.getDefaultToolkit().screenSize
 
 
     fun closeBar(){
@@ -54,15 +57,13 @@ object BarManager {
             println("cant appy without registerd")
             return
         }
-        val height =
-            User32.INSTANCE.GetSystemMetrics(1)
 
         val rect = RECT()
 
         rect.left = 0
         rect.top = 0
         rect.right = currentProfile.width
-        rect.bottom = height
+        rect.bottom = screenSize.height
 
 
         data.uEdge = ABE_LEFT

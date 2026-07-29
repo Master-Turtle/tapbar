@@ -6,7 +6,7 @@ import java.awt.Toolkit
 
 abstract class Profile : Presets() {
 
-    val screenSize = Toolkit.getDefaultToolkit().screenSize
+
     val corners : Dp = 8.dp
 
     abstract val type : Profiles
