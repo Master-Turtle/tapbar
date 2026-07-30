@@ -68,7 +68,7 @@ fun main() = application {
                 state = rememberWindowState(
                     width = 100.dp,
                     height = 50.dp,
-                    position = WindowPosition.Aligned(Alignment.TopStart)
+                    position = WindowPosition(x = BarManager.currentProfile.width.dp,y = 0.dp)
                 )
             ){
                 val profilesWindow = remember { ProfilesWindow()}
