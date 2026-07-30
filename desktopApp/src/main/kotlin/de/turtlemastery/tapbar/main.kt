@@ -67,7 +67,7 @@ fun main() = application {
                 transparent = true,
                 state = rememberWindowState(
                     width = 100.dp,
-                    height = 46.dp,
+                    height = 42.dp,
                     position = WindowPosition(x = BarManager.currentProfile.width.dp,y = 6.dp)
                 )
             ){

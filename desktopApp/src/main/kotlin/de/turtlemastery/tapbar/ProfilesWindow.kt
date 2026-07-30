@@ -36,7 +36,7 @@ class ProfilesWindow : Presets(){
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(end = 3.dp,top = 3.dp, bottom = 3.dp)
+                        .padding(3.dp)
                         .background(
                             color = Color(32, 31, 30),
                             shape = RoundedCornerShape(8.dp)
@@ -45,16 +45,17 @@ class ProfilesWindow : Presets(){
                 ){
                     Row(
                         modifier = Modifier
-                            //.fillMaxSize()
-                            //.padding(start=3.dp)
+                            .fillMaxSize()
+                            .padding(start=3.dp)
                             ,
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                        horizontalArrangement = Arrangement.spacedBy(3.dp)
                     ){
                         if(BarManager.currentProfile != Profiles.DEFAULT){
                             DefaultButton(
                                 modifier = Modifier
-                                    .size(width = 36.dp, height = 36.dp),
+                                    .width(36.dp)
+                                    .fillMaxHeight(),
+
                                 onClick = {
                                     BarManager.currentProfile = Profiles.DEFAULT
                                     BarManager.showPofilesWindow = false
@@ -71,7 +72,8 @@ class ProfilesWindow : Presets(){
                         if(BarManager.currentProfile != Profiles.KRITA){
                             DefaultButton(
                                 modifier = Modifier
-                                    .size(width = 36.dp, height = 36.dp),
+                                    .width(36.dp)
+                                    .fillMaxHeight(),
                                 onClick = {
                                     BarManager.currentProfile = Profiles.KRITA
                                     BarManager.showPofilesWindow = false
