@@ -25,7 +25,6 @@ class ProfilesWindow : Presets(){
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(top = 6.dp)
                     .background(
                         color = Color.Black,
                         shape = RoundedCornerShape(
@@ -42,13 +41,15 @@ class ProfilesWindow : Presets(){
                             color = Color(32, 31, 30),
                             shape = RoundedCornerShape(8.dp)
                         ),
+                    contentAlignment = Alignment.CenterStart
                 ){
                     Row(
                         modifier = Modifier
-                            .fillMaxSize()
+                            //.fillMaxSize()
                             //.padding(start=3.dp)
                             ,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ){
                         if(BarManager.currentProfile != Profiles.DEFAULT){
                             DefaultButton(

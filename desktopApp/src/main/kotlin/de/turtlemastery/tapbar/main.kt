@@ -67,8 +67,8 @@ fun main() = application {
                 transparent = true,
                 state = rememberWindowState(
                     width = 100.dp,
-                    height = 50.dp,
-                    position = WindowPosition(x = BarManager.currentProfile.width.dp,y = 0.dp)
+                    height = 46.dp,
+                    position = WindowPosition(x = BarManager.currentProfile.width.dp,y = 6.dp)
                 )
             ){
                 val profilesWindow = remember { ProfilesWindow()}
