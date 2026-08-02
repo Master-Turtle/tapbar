@@ -9,6 +9,9 @@ const val ABM_NEW = 0x00000000
 const val ABM_REMOVE = 0x00000001
 const val ABM_QUERYPOS = 0x00000002
 const val ABM_SETPOS = 0x00000003
+const val SPI_GETWORKAREA = 0x0030
+const val GWLP_WNDPROC = -4
+const val ABM_GETTASKBARPOS = 0x00000005
 
 const val ABE_LEFT = 0
 const val ABE_TOP = 1
