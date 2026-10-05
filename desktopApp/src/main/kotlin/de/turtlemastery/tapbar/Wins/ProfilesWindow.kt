@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar
+package de.turtlemastery.tapbar.Wins
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,9 +14,37 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Brush
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.rememberWindowState
+import de.turtlemastery.tapbar.BarManager
+import de.turtlemastery.tapbar.CP
+import de.turtlemastery.tapbar.Presets
+import de.turtlemastery.tapbar.Profiles
 
 
 class ProfilesWindow : Presets(){
+
+    @Composable
+    fun window(){
+        val density = LocalDensity.current
+        Window(
+            onCloseRequest = { BarManager.showPofilesWindow = false },
+            title = "ProfilesWindow",
+            undecorated = true,
+            resizable = false,
+            alwaysOnTop = false,
+            transparent = true,
+            state = rememberWindowState(
+                width = 100.dp,
+                height = 42.dp,
+                position = WindowPosition(x = with(density){ BarManager.currentProfile.width.toDp()},y = 6.dp)
+            )
+        ){
+            content()
+        }
+    }
 
     @Composable
     fun content(){

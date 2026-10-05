@@ -4,6 +4,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.awt.ComposeWindow
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import com.sun.jna.WString
 import com.sun.jna.platform.win32.WinDef.HWND
 import com.sun.jna.platform.win32.WinDef.RECT
@@ -47,6 +49,12 @@ object BarManager {
     fun closeBar(){
         unapplyBar()
         shouldExit = true
+    }
+
+    fun attach(window: ComposeWindow) {
+        barWindow = window
+        register(window.hwnd)
+        startBarMonitor()
     }
 
     fun register(hwnd: HWND?) {
@@ -157,16 +165,8 @@ object BarManager {
     }
 
     fun getWorkArea(): RECT {
-
         val rect = RECT()
-
-        User32.INSTANCE.SystemParametersInfoW(
-            SPI_GETWORKAREA,
-            0,
-            rect,
-            0
-        )
-
+        User32.INSTANCE.SystemParametersInfoW(SPI_GETWORKAREA, 0, rect, 0)
         return rect
     }
 
@@ -187,7 +187,7 @@ object BarManager {
                         applyBar()
                     }
                 }
-                Thread.sleep(1000)
+                Thread.sleep(200)
             }
         }
         monitorThread!!.isDaemon = true

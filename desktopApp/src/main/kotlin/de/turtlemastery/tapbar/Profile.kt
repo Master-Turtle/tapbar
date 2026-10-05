@@ -8,6 +8,7 @@ abstract class Profile : Presets() {
 
 
     val corners : Dp = 8.dp
+    val contentPadding : Dp = 4.dp
 
     abstract val type : Profiles
 
