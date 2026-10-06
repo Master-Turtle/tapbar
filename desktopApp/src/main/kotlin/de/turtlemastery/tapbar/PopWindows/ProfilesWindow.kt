@@ -1,4 +1,4 @@
-package de.turtlemastery.tapbar.Wins
+package de.turtlemastery.tapbar.PopWindows
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -22,6 +22,8 @@ import de.turtlemastery.tapbar.BarManager
 import de.turtlemastery.tapbar.CP
 import de.turtlemastery.tapbar.Presets
 import de.turtlemastery.tapbar.Profiles
+import java.awt.event.WindowEvent
+import java.awt.event.WindowFocusListener
 
 
 class ProfilesWindow : Presets(){
@@ -37,11 +39,24 @@ class ProfilesWindow : Presets(){
             alwaysOnTop = false,
             transparent = true,
             state = rememberWindowState(
-                width = 100.dp,
+                width = 150.dp,
                 height = 42.dp,
                 position = WindowPosition(x = with(density){ BarManager.currentProfile.width.toDp()},y = 6.dp)
             )
         ){
+            LaunchedEffect(window) {
+
+                window.addWindowFocusListener(object : WindowFocusListener {
+                    override fun windowGainedFocus(e: WindowEvent?) {
+                        BarManager.focused = true
+                    }
+
+                    override fun windowLostFocus(e: WindowEvent?) {
+                        BarManager.focused = false
+                    }
+                })
+            }
+
             content()
         }
     }

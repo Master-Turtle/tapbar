@@ -57,7 +57,7 @@ class KritaProf : Profile(){
                                 .fillMaxWidth()
                         ){
 
-                            togleProfilesWindowButton(contentWidth,30.dp,Icons.Default.Brush, CP.default[0])
+                            toggleProfilesWindowButton(contentWidth,30.dp,Icons.Default.Brush, CP.default[0])
 
                         }
                     }

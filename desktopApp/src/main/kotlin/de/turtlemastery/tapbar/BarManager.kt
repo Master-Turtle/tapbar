@@ -20,19 +20,26 @@ import de.turtlemastery.tapbar.system.SPI_GETWORKAREA
 import de.turtlemastery.tapbar.system.Shell32
 import de.turtlemastery.tapbar.system.TapBarDATA
 import de.turtlemastery.tapbar.system.User32
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import java.awt.Toolkit
 
 
 
 object BarManager {
-
     lateinit var barWindow: ComposeWindow
 
     var minimized by mutableStateOf(false)
     var showPofilesWindow by mutableStateOf(false)
+    var showSettingsWindow by mutableStateOf(false)
     var currentProfile by mutableStateOf(Profiles.DEFAULT)
     var shouldExit by mutableStateOf(false)
-    var registered by mutableStateOf(false)
+    var registered = false
+    var focused by mutableStateOf(true)
+
+
+    var touchScreen by mutableStateOf(true)
 
     private var monitorThread: Thread? = null
     private var monitoring = false
@@ -44,6 +51,7 @@ object BarManager {
 
     val data = TapBarDATA()
     val screenSize = Toolkit.getDefaultToolkit().screenSize
+    val taskRunner = WinTaskRunner(CoroutineScope(SupervisorJob() + Dispatchers.Default))
 
 
     fun closeBar(){

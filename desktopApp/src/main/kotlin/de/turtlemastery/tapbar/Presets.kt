@@ -51,7 +51,7 @@ open class Presets {
             modifier = modifier
                 .clip(RoundedCornerShape(8.dp))
                 .background(
-                    if (isHovered) Color(80,80,80)
+                    if (isHovered && BarManager.focused) Color(80,80,80)
                     else Color.Transparent
                 )
                 .clickable(
@@ -69,13 +69,31 @@ open class Presets {
 
 
     @Composable
-    fun togleProfilesWindowButton(width: Dp, height:Dp, icon : ImageVector, color1 : Color) {
+    fun toggleProfilesWindowButton(width: Dp, height:Dp, icon : ImageVector, color1 : Color) {
         DefaultButton(
             modifier = Modifier
                 .width(width)
                 .height(height),
             onClick = {
                 BarManager.showPofilesWindow = !BarManager.showPofilesWindow
+            }
+        ){
+            Icon(
+                tint = color1,
+                imageVector = icon,
+                contentDescription = null,
+            )
+        }
+    }
+
+    @Composable
+    fun toggleSettingsWindowButton(width: Dp, height:Dp, icon : ImageVector, color1 : Color) {
+        DefaultButton(
+            modifier = Modifier
+                .width(width)
+                .height(height),
+            onClick = {
+                BarManager.showSettingsWindow = !BarManager.showSettingsWindow
             }
         ){
             Icon(
@@ -130,6 +148,31 @@ open class Presets {
                     modifier = Modifier.size(20.dp)
                 )
             }
+        }
+    }
+
+    @Composable
+    fun toggleTouchButton(width: Dp, height:Dp, icon : ImageVector, color1 : Color, color2 : Color) {
+        DefaultButton(
+            modifier = Modifier
+                .width(width)
+                .height(height),
+            onClick = {
+                if(BarManager.touchScreen){
+                    BarManager.touchScreen = false
+                    BarManager.taskRunner.startTask(WinTasks.DISABLETOUCH.value)
+                }
+                else{
+                    BarManager.touchScreen = true
+                    BarManager.taskRunner.startTask(WinTasks.ENABLETOUCH.value)
+                }
+            }
+        ){
+            Icon(
+                tint =  if (BarManager.touchScreen) color2 else color1,
+                imageVector = icon,
+                contentDescription = null,
+            )
         }
     }
 

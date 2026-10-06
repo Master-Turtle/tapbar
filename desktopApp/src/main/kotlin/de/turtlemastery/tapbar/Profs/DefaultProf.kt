@@ -10,6 +10,8 @@ import androidx.compose.ui.unit.*
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
@@ -26,8 +28,11 @@ class DefaultProf : Profile() {
     override fun create() {
 
         var color1 by remember { mutableStateOf(CP.default[0]) }
+        var color2 by remember { mutableStateOf(CP.default[1]) }
+        var color3 by remember { mutableStateOf(CP.default[4]) }
+        var color4 by remember { mutableStateOf(CP.default[8]) }
 
-
+        val contentWidth = with(LocalDensity.current){(BarManager.currentProfile.width).toDp()}-contentPadding
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -46,10 +51,14 @@ class DefaultProf : Profile() {
                     ) {
                     Column(
                         modifier = Modifier
-                            .fillMaxSize()
+                            .fillMaxSize(),
                     ){
-                        val contentWidth = with(LocalDensity.current){(BarManager.currentProfile.width).toDp()}-contentPadding
-                        togleProfilesWindowButton(contentWidth,30.dp,Icons.Default.Home,color1)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        toggleProfilesWindowButton(contentWidth,30.dp,Icons.Default.Home,color1)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        toggleSettingsWindowButton(contentWidth,30.dp,Icons.Default.Settings,color3)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        toggleTouchButton(contentWidth,30.dp,Icons.Default.TouchApp,Color.Gray,color4)
                     }
                 }
 

@@ -8,4 +8,9 @@ hellichkeits button
 calc button
 one note navigation buttons
 one note pen color usw buttons
+lasso tool
 
+Beim profielwechsel entsprechendes programm starten
+
+settings:
+disable touch confirm screen yes or no
