@@ -49,19 +49,10 @@ fun main() = application {
         undecorated = true,
         alwaysOnTop = true,
         transparent = true,
+        focusable = false,
     ){
         LaunchedEffect(window) {
             BarManager.attach(window)
-
-            window.addWindowFocusListener(object : WindowFocusListener {
-                override fun windowGainedFocus(e: WindowEvent?) {
-                    BarManager.focused = true
-                }
-
-                override fun windowLostFocus(e: WindowEvent?) {
-                    BarManager.focused = false
-                }
-            })
         }
         Box(
             Modifier

@@ -45,14 +45,10 @@ class ProfilesWindow : Presets(){
             )
         ){
             LaunchedEffect(window) {
-
                 window.addWindowFocusListener(object : WindowFocusListener {
-                    override fun windowGainedFocus(e: WindowEvent?) {
-                        BarManager.focused = true
-                    }
-
+                    override fun windowGainedFocus(e: WindowEvent?) {}
                     override fun windowLostFocus(e: WindowEvent?) {
-                        BarManager.focused = false
+                        BarManager.showPofilesWindow = false;
                     }
                 })
             }

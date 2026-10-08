@@ -21,6 +21,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.Screenshot
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -51,7 +52,7 @@ open class Presets {
             modifier = modifier
                 .clip(RoundedCornerShape(8.dp))
                 .background(
-                    if (isHovered && BarManager.focused) Color(80,80,80)
+                    if (isHovered) Color(80,80,80)
                     else Color.Transparent
                 )
                 .clickable(
@@ -176,6 +177,24 @@ open class Presets {
         }
     }
 
+    @Composable
+    fun screenShotButton(width: Dp, height:Dp,color1 : Color){
+        DefaultButton(
+            modifier = Modifier
+                .width(width)
+                .height(height),
+            onClick = {
+
+            }
+        ){
+            Icon(
+                tint = color1,
+                imageVector = Icons.Default.Screenshot,
+                contentDescription = null,
+                modifier = Modifier.size(20.dp)
+            )
+        }
+    }
 
 
 

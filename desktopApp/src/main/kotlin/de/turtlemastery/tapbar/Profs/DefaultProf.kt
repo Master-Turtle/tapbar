@@ -31,6 +31,7 @@ class DefaultProf : Profile() {
         var color2 by remember { mutableStateOf(CP.default[1]) }
         var color3 by remember { mutableStateOf(CP.default[4]) }
         var color4 by remember { mutableStateOf(CP.default[8]) }
+        var color5 by remember { mutableStateOf(CP.default[9]) }
 
         val contentWidth = with(LocalDensity.current){(BarManager.currentProfile.width).toDp()}-contentPadding
         Column(
@@ -59,6 +60,8 @@ class DefaultProf : Profile() {
                         toggleSettingsWindowButton(contentWidth,30.dp,Icons.Default.Settings,color3)
                         Spacer(modifier = Modifier.height(8.dp))
                         toggleTouchButton(contentWidth,30.dp,Icons.Default.TouchApp,Color.Gray,color4)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        screenShotButton(contentWidth,30.dp,color5)
                     }
                 }
 

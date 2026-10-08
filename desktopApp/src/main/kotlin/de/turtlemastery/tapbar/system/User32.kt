@@ -24,11 +24,6 @@ interface User32 : StdCallLibrary {
     }
 
 
-    fun getSystemMetrics(
-        index: Int
-    ): Int
-
-
     fun SetWindowPos(
         hWnd: WinDef.HWND?,
         hWndInsertAfter: WinDef.HWND?,
@@ -64,6 +59,18 @@ interface User32 : StdCallLibrary {
         lParam: Pointer?
     ): Boolean
 
+    // NEU
+    fun GetWindowLongW(
+        hWnd: WinDef.HWND?,
+        nIndex: Int
+    ): Int
+
+    fun SetWindowLongW(
+        hWnd: WinDef.HWND?,
+        nIndex: Int,
+        dwNewLong: Int
+    ): Int
+
     interface EnumWindowsProc : Callback {
 
         fun callback(
@@ -71,25 +78,6 @@ interface User32 : StdCallLibrary {
             lParam: Pointer?
         ): Boolean
     }
-
-    fun GetWindowLongPtrW(
-        hWnd: WinDef.HWND,
-        nIndex: Int
-    ): Pointer
-
-    fun SetWindowLongPtrW(
-        hWnd: WinDef.HWND,
-        nIndex: Int,
-        newLong: Pointer
-    ): Pointer
-
-    fun CallWindowProcW(
-        prevWndFunc: Pointer,
-        hWnd: WinDef.HWND,
-        msg: Int,
-        wParam: Pointer?,
-        lParam: Pointer?
-    ): Long
 
     fun SystemParametersInfoW(
         action: Int,

@@ -7,7 +7,6 @@ import androidx.compose.ui.awt.ComposeWindow
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
 import com.sun.jna.WString
-import com.sun.jna.platform.win32.WinDef.HWND
 import com.sun.jna.platform.win32.WinDef.RECT
 import de.turtlemastery.tapbar.system.Dwmapi
 import de.turtlemastery.tapbar.system.ABE_LEFT
@@ -24,7 +23,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import java.awt.Toolkit
+import java.awt.Window
+import java.lang.annotation.Native
 
+import com.sun.jna.platform.win32.BaseTSD
+import com.sun.jna.platform.win32.User32 as JnaUser32
+import com.sun.jna.platform.win32.WinDef.HWND
 
 
 object BarManager {
@@ -36,7 +40,6 @@ object BarManager {
     var currentProfile by mutableStateOf(Profiles.DEFAULT)
     var shouldExit by mutableStateOf(false)
     var registered = false
-    var focused by mutableStateOf(true)
 
 
     var touchScreen by mutableStateOf(true)
@@ -61,6 +64,7 @@ object BarManager {
 
     fun attach(window: ComposeWindow) {
         barWindow = window
+
         register(window.hwnd)
         startBarMonitor()
     }
@@ -126,7 +130,7 @@ object BarManager {
         registered = false
     }
 
-    fun setWindowPos(rect: RECT){
+    fun setWindowPos(rect: RECT) {
 
         User32.INSTANCE.SetWindowPos(
             data.hWnd,
@@ -135,7 +139,7 @@ object BarManager {
             rect.top,
             rect.right - rect.left,
             rect.bottom - rect.top,
-            0x0040
+            0
         )
     }
 
